@@ -28,5 +28,18 @@ public class SimulationState {
         return consumers;
     }
 
+    public void addProducer(Producer producer){
+        producers.add(producer);
+    }
+
+    public void addConverter(Converter converter){
+        converters.add(converter);
+    }
+
+    public void addConsumer(Consumer consumer){
+        consumers.add(consumer);
+    }
+
+    
     
 }

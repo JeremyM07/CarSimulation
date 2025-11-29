@@ -17,6 +17,9 @@ public class Parser {
         command = command.trim().toLowerCase(); //remove extra whitespace around string, turn to lowercase
         String[] splitCmd = command.split("\\s+"); // Split into array of words by whitespace (accounts for two or more whitespaces if entered accidentally)
         List<String> words = Arrays.asList(splitCmd); // Turns array into list object
+        String cmd = words.get(0);
+
+        switch 
 
         if 
 
