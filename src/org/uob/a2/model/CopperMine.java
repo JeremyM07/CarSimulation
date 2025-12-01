@@ -14,7 +14,7 @@ public class CopperMine extends Producer implements Tickable{
     @Override
     public void produce(Context ctx){
         ctx.state().addResource(this.getProduct(), this.getAmount());
-        String message = this.getName() + " -> " + this.getProduct().name() + "(" + this.getAmount() + ")";
+        String message = this.getName() + " -> " + this.getProduct().name() + "(" + ctx.state().getResource(this.getProduct()) + ")";
         System.out.println(message);
     }
 
