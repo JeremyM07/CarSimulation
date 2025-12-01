@@ -9,16 +9,19 @@ import java.util.ArrayList;
 public class Engine {
     private int tick;
     protected SimulationState state;
+    protected Context ctx;
 
     public Engine(){
         this.state = new SimulationState();
         this.tick = 0;
+        this.ctx = new Context(this, this.state);
     }
 
 
     public Engine(SimulationState state){
         this.state = state;
         this.tick = 0;
+        this.ctx = new Context(this, this.state);
         
     }
     
@@ -41,14 +44,29 @@ public class Engine {
         return this.state;
     }
 
-    public String nextTick(Context ctx){
+    public String nextTick(){
         for(Producer p : state.getProducers()){
-            p.tick(ctx);
+            p.tick(this.ctx);
         }
 
         //...
         this.tick++;
         this.state.updateHistory();
+        return "Tick : " + this.getCurrentTick();
+    }
+
+    // tick by a certain amount
+    public String nextTick(int amount){
+        for(int i = 0; i < amount; i++){
+            
+            for(Producer p : state.getProducers()){
+                p.tick(this.ctx);
+            }
+            //...
+            this.tick++;
+            this.state.updateHistory();
+            
+        }
         return "Tick : " + this.getCurrentTick();
     }
     

@@ -15,16 +15,16 @@ public class Main {
     public static void main(String[] args){
         SimulationState state = new SimulationState();
         Engine engine = new Engine(state);
-        Context ctx = new Context(engine, state);
+        
 
-        ctx.engine().initialiseDefaults();
+        engine.initialiseDefaults();
 
-        System.out.println("Iron before: " + ctx.state().getResource(ResourceType.IRON_ORE));
+        System.out.println("Iron before: " + state.getResource(ResourceType.IRON_ORE));
 
-        System.out.println(ctx.engine().nextTick(ctx));
-        System.out.println(ctx.engine().nextTick(ctx));
+        System.out.println(engine.nextTick());
+        System.out.println(engine.nextTick());
 
-        System.out.println("Iron after: " + ctx.state().getResource(ResourceType.IRON_ORE));
+        System.out.println("Iron after: " + state.getResource(ResourceType.IRON_ORE));
 
         
         
