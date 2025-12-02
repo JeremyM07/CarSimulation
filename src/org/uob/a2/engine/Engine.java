@@ -45,7 +45,16 @@ public class Engine {
 
         //Converters
         ChemicalPlant chem = new ChemicalPlant();
+        Extruder extruder = new Extruder();
+        Furnace furnace = new Furnace();
+        RaceAcademy academy = new RaceAcademy();
+        Smelter smelter = new Smelter();
         this.state.addConverter(chem);
+        this.state.addConverter(extruder);
+        this.state.addConverter(furnace);
+        this.state.addConverter(academy);
+        this.state.addConverter(smelter);
+
 
 
         
@@ -85,12 +94,17 @@ public class Engine {
             }
             
             for(Producer p : state.getProducers()){
-                p.tick(this.ctx);
+                p.tick(this.ctx); 
             }
 
             //...
             this.tick++;
             this.state.updateHistory();
+            if (i != amount-1){
+                System.out.println("Tick : " + this.getCurrentTick());
+                System.out.println("");
+                System.out.println("-------------------------------------------");
+            }
             
         }
         return "Tick : " + this.getCurrentTick();

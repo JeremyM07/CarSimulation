@@ -20,9 +20,7 @@ public class Main {
         engine.initialiseDefaults();
 
 
-        System.out.println(engine.nextTick());
-        System.out.println(engine.nextTick());
-        System.out.println(engine.nextTick());
+        System.out.println(engine.nextTick(20));
 
 
 

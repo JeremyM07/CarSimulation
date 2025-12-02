@@ -9,7 +9,7 @@ public class ChemicalPlant extends Converter implements Tickable{
     private final int output2Amount = 5;
 
     public ChemicalPlant(){
-        super("Chemical Plant", ResourceType.CRUDE_OIL, 2, ResourceType.RUBBER, 4);
+        super("Chemical Plant", ResourceType.CRUDE_OIL, 10, ResourceType.RUBBER, 4);
         this.addCost(ResourceType.CREDITS, 100);
     }
 
@@ -24,11 +24,11 @@ public class ChemicalPlant extends Converter implements Tickable{
 
     @Override
     public void convert(Context ctx){
-        if (ctx.state().getResource(this.getInput()) >= this.getInputAmount()){
+        if (ctx.state().getResource(this.getInput()) >= this.getInputAmount()){// Crude oil makes plastic and rubber
             ctx.state().addResource(this.getOutput(), this.getOutputAmount());
             ctx.state().addResource(this.getOutput2(), this.getOutput2Amount());
             String message = this.getInput().name() + "("+ctx.state().getResource(this.getInput())+")"+ " -> " + this.getName() + " -> " + this.getOutput().name() + "(" + ctx.state().getResource(this.getOutput()) + ")" + " + " + this.getOutput2().name() + "(" + ctx.state().getResource(this.getOutput2())+")";
-            System.out.println(message);
+            System.out.println(message);// Conversion message
             ctx.state().removeResource(this.getInput(), this.getInputAmount());
         }
     }
