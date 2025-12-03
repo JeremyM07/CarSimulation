@@ -55,7 +55,9 @@ public class Engine {
         this.state.addConverter(academy);
         this.state.addConverter(smelter);
 
-
+        //Consumers
+        Petrol petrol = new Petrol();
+        this.state.addConsumer(petrol);
 
         
         
@@ -74,6 +76,9 @@ public class Engine {
     }
 
     public String nextTick(){
+        for(Consumer c: state.getConsumers()){
+            c.tick(this.ctx);
+        }
         for(Converter c: state.getConverters()){
             c.tick(this.ctx);
         }
@@ -89,6 +94,9 @@ public class Engine {
     // tick by a certain amount
     public String nextTick(int amount){
         for(int i = 0; i < amount; i++){
+            for(Consumer c: state.getConsumers()){
+                c.tick(this.ctx);
+            }
             for(Converter c: state.getConverters()){
                 c.tick(this.ctx);
             }

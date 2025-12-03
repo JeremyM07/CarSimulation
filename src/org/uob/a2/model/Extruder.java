@@ -15,7 +15,7 @@ public class Extruder extends Converter implements Tickable{
     public void convert(Context ctx){
         if (ctx.state().getResource(this.getInput()) >= this.getInputAmount()){
             ctx.state().addResource(this.getOutput(), this.getOutputAmount());
-            String message = this.getInput().name() + "("+ctx.state().getResource(this.getInput())+")"+ " -> " + this.getName() + " -> " + this.getOutput().name() + "(" + ctx.state().getResource(this.getOutput()) + ")";
+            String message = this.getInput().name() + "("+this.getInputAmount()+")"+ " -> " + this.getName() + " -> " + this.getOutput().name() + "(" + this.getOutputAmount() + ")";
             System.out.println(message);// Conversion message
             ctx.state().removeResource(this.getInput(), this.getInputAmount());
         }

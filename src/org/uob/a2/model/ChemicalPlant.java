@@ -27,7 +27,7 @@ public class ChemicalPlant extends Converter implements Tickable{
         if (ctx.state().getResource(this.getInput()) >= this.getInputAmount()){// Crude oil makes plastic and rubber
             ctx.state().addResource(this.getOutput(), this.getOutputAmount());
             ctx.state().addResource(this.getOutput2(), this.getOutput2Amount());
-            String message = this.getInput().name() + "("+ctx.state().getResource(this.getInput())+")"+ " -> " + this.getName() + " -> " + this.getOutput().name() + "(" + ctx.state().getResource(this.getOutput()) + ")" + " + " + this.getOutput2().name() + "(" + ctx.state().getResource(this.getOutput2())+")";
+            String message = this.getInput().name() + "("+this.getInputAmount()+")"+ " -> " + this.getName() + " -> " + this.getOutput().name() + "(" + this.getOutputAmount() + ")" + " + " + this.getOutput2().name() + "(" + this.getOutput2Amount()+")";
             System.out.println(message);// Conversion message
             ctx.state().removeResource(this.getInput(), this.getInputAmount());
         }

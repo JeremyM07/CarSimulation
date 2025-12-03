@@ -14,7 +14,7 @@ public class CoalMine extends Producer implements Tickable{
     @Override
     public void produce(Context ctx){
         ctx.state().addResource(this.getProduct(), this.getAmount());
-        String message = this.getName() + " -> " + this.getProduct().name() + "(" + ctx.state().getResource(this.getProduct()) + ")";
+        String message = this.getName() + " -> " + this.getProduct().name() + "(" + this.getAmount() + ")";
         System.out.println(message);    
     }
 

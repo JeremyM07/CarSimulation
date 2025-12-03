@@ -15,13 +15,13 @@ public enum ResourceType {
     COPPER_WIRE,
     DRIVER,
     // FINAL PARTS
-    WINDOWS,
+    WINDOW,
     CHASSIS,
     ENGINE,
     PETROL,
     DASHBOARD,
-    WHEELS,
-    SEATS,
+    WHEEL,
+    SEAT,
     // FINAL PRODUCT
     RACE_CAR,
     CREDITS,
