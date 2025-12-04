@@ -9,7 +9,7 @@ public class Furnace extends Converter implements Tickable{
     private final int input2Amount = 8;
 
     public Furnace(){
-        super("Furnace", ResourceType.COAL_ORE, 4, ResourceType.GLASS, 4);
+        super("Furnace", ResourceType.COAL_ORE, 4, ResourceType.GLASS, 10);
         this.addCost(ResourceType.CREDITS, 100);
     }
 

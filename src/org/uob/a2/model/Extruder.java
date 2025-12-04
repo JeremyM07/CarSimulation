@@ -6,7 +6,7 @@ import org.uob.a2.data.Saver;
 public class Extruder extends Converter implements Tickable{
 
     public Extruder(){
-        super("Extruder", ResourceType.COPPER_ORE, 4, ResourceType.COPPER_WIRE, 3);
+        super("Extruder", ResourceType.COPPER_ORE, 4, ResourceType.COPPER_WIRE, 8);
         this.addCost(ResourceType.CREDITS, 100);
     }
 

@@ -49,15 +49,30 @@ public class Engine {
         Furnace furnace = new Furnace();
         RaceAcademy academy = new RaceAcademy();
         Smelter smelter = new Smelter();
+        Refinery refinery = new Refinery();
+        CarAssembler carassemble = new CarAssembler();
+        ChassisFactory chassis = new ChassisFactory();
+        DashboardFactory dash = new DashboardFactory();
+        EngineFactory enginefactory = new EngineFactory();
+        SeatFactory seat = new SeatFactory();
+        WheelFactory wheel = new WheelFactory();
+        WindowFactory window = new WindowFactory();
         this.state.addConverter(chem);
         this.state.addConverter(extruder);
         this.state.addConverter(furnace);
         this.state.addConverter(academy);
         this.state.addConverter(smelter);
+        this.state.addConverter(refinery);
+        this.state.addConverter(carassemble);
+        this.state.addConverter(chassis);
+        this.state.addConverter(dash);
+        this.state.addConverter(enginefactory);
+        this.state.addConverter(seat);
+        this.state.addConverter(wheel);
+        this.state.addConverter(window);
 
         //Consumers
-        Petrol petrol = new Petrol();
-        this.state.addConsumer(petrol);
+
 
         
         
@@ -76,9 +91,9 @@ public class Engine {
     }
 
     public String nextTick(){
-        for(Consumer c: state.getConsumers()){
-            c.tick(this.ctx);
-        }
+        // for(Consumer c: state.getConsumers()){
+        //     c.tick(this.ctx);
+        // }
         for(Converter c: state.getConverters()){
             c.tick(this.ctx);
         }
@@ -94,9 +109,9 @@ public class Engine {
     // tick by a certain amount
     public String nextTick(int amount){
         for(int i = 0; i < amount; i++){
-            for(Consumer c: state.getConsumers()){
-                c.tick(this.ctx);
-            }
+            // for(Consumer c: state.getConsumers()){
+            //     c.tick(this.ctx);
+            // }
             for(Converter c: state.getConverters()){
                 c.tick(this.ctx);
             }

@@ -1,12 +1,13 @@
 package org.uob.a2.model;
 
 public enum ResourceType {
+    // NATURAL RESOURCES
     IRON_ORE,
     COPPER_ORE,
     COAL_ORE,
     CRUDE_OIL,
     SAND,
-    ENGINEER,
+    ENGINEER, 
     // FROM CONVERTERS
     STEEL,
     PLASTIC,
@@ -25,6 +26,8 @@ public enum ResourceType {
     // FINAL PRODUCT
     RACE_CAR,
     CREDITS,
+    //ACTION FOR CAR
+    RACE_TRACK,
     //FROM SHOP
     TWIN_TURBO,
     EV_ENGINE,
