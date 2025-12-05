@@ -1,5 +1,5 @@
 package org.uob.a2;
-
+import java.util.Random;
 // import org.uob.a2.engine.SimulationState;
 // import org.uob.a2.model.IronMine;
 // import org.uob.a2.model.ResourceType;
@@ -20,7 +20,8 @@ public class Main {
         engine.initialiseDefaults();
 
 
-        System.out.println(engine.nextTick(100));
+        System.out.println(engine.nextTick(125));
+        System.out.println(state.getInventory());
 
 
 

@@ -10,10 +10,12 @@ public class WindowFactory extends Converter implements Tickable {
     private boolean stopConvert = false;
     
     public WindowFactory() {
-        super("Window Factory",ResourceType.ENGINEER, 1, ResourceType.WINDOW,3);
+        super("Window Factory",ResourceType.ENGINEER, 2, ResourceType.WINDOW,3);
         this.addCost(ResourceType.CREDITS, 100);
     }
-
+    public void startConvert(){
+        this.stopConvert = false;
+    }
 
     public ResourceType getInput2(){
         return input2;
@@ -24,6 +26,9 @@ public class WindowFactory extends Converter implements Tickable {
     }
 
     public void tick(Context ctx){
+        if (ctx.state().getResource(this.getOutput()) <= 5){
+            this.startConvert();
+        }
         this.convert(ctx);
     }
 

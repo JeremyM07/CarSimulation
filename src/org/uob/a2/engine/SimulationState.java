@@ -3,6 +3,7 @@ package org.uob.a2.engine;
 import org.uob.a2.model.*;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -84,6 +85,5 @@ public class SimulationState {
         consumers.add(consumer);
     }
 
-    
     
 }

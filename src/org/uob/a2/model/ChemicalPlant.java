@@ -6,10 +6,10 @@ import org.uob.a2.data.Saver;
 public class ChemicalPlant extends Converter implements Tickable{
     
     private final ResourceType output2 = ResourceType.PLASTIC;
-    private final int output2Amount = 10;
+    private final int output2Amount = 18;
 
     public ChemicalPlant(){
-        super("Chemical Plant", ResourceType.CRUDE_OIL, 10, ResourceType.RUBBER, 10);
+        super("Chemical Plant", ResourceType.CRUDE_OIL, 6, ResourceType.RUBBER, 10);
         this.addCost(ResourceType.CREDITS, 100);
     }
 

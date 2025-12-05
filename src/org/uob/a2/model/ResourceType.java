@@ -26,8 +26,6 @@ public enum ResourceType {
     // FINAL PRODUCT
     RACE_CAR,
     CREDITS,
-    //ACTION FOR CAR
-    RACE_TRACK,
     //FROM SHOP
     TWIN_TURBO,
     EV_ENGINE,

@@ -6,18 +6,20 @@ import org.uob.a2.data.Saver;
 public class DashboardFactory extends Converter implements Tickable {
     
     private final ResourceType input2 = ResourceType.GLASS;
-    private final int input2Amount = 4;
+    private final int input2Amount = 2;
     private final ResourceType input3 = ResourceType.COPPER_WIRE;
-    private final int input3Amount = 12;
+    private final int input3Amount = 20;
     private final ResourceType input4 = ResourceType.PLASTIC;
-    private final int input4Amount = 10;
+    private final int input4Amount = 4;
     private boolean stopConvert = false;
     
     public DashboardFactory() {
         super("Dashboard Factory",ResourceType.ENGINEER, 3, ResourceType.DASHBOARD,1);
         this.addCost(ResourceType.CREDITS, 100);
     }
-
+    public void startConvert(){
+        this.stopConvert = false;
+    }
     public ResourceType getInput2(){
         return input2;
     }
@@ -43,6 +45,9 @@ public class DashboardFactory extends Converter implements Tickable {
     }
 
     public void tick(Context ctx){
+        if (ctx.state().getResource(this.getOutput()) < 1){
+            this.startConvert();
+        }
         this.convert(ctx);
     }
 

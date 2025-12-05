@@ -8,14 +8,16 @@ public class SeatFactory extends Converter implements Tickable {
     private final ResourceType input2 = ResourceType.STEEL;
     private final int input2Amount = 4;
     private final ResourceType input3 = ResourceType.PLASTIC;
-    private final int input3Amount = 8;
+    private final int input3Amount = 4;
     private boolean stopConvert = false;
     
     public SeatFactory() {
         super("Seat Factory",ResourceType.ENGINEER, 2, ResourceType.SEAT,1);
         this.addCost(ResourceType.CREDITS, 100);
     }
-
+    public void startConvert(){
+        this.stopConvert = false;
+    }
     public ResourceType getInput2(){
         return input2;
     }
@@ -33,6 +35,9 @@ public class SeatFactory extends Converter implements Tickable {
     }
 
     public void tick(Context ctx){
+        if (ctx.state().getResource(this.getOutput()) <= 1){
+            this.startConvert();
+        }
         this.convert(ctx);
     }
 

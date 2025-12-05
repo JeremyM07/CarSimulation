@@ -6,14 +6,16 @@ import org.uob.a2.data.Saver;
 public class ChassisFactory extends Converter implements Tickable {
     
     private final ResourceType input2 = ResourceType.STEEL;
-    private final int input2Amount = 20;
+    private final int input2Amount = 16;
     private boolean stopConvert = false;
     
     public ChassisFactory() {
-        super("Chassis Factory",ResourceType.ENGINEER, 1, ResourceType.CHASSIS,1);
+        super("Chassis Factory",ResourceType.ENGINEER, 2, ResourceType.CHASSIS,1);
         this.addCost(ResourceType.CREDITS, 100);
     }
-
+    public void startConvert(){
+        this.stopConvert = false;
+    }
 
     public ResourceType getInput2(){
         return input2;
@@ -24,6 +26,9 @@ public class ChassisFactory extends Converter implements Tickable {
     }
 
     public void tick(Context ctx){
+        if (ctx.state().getResource(this.getOutput()) < 1){
+            this.startConvert();
+        }
         this.convert(ctx);
     }
 

@@ -1,5 +1,5 @@
 package org.uob.a2.engine;
-
+import java.util.Random;
 import org.uob.a2.model.*;
 import org.uob.a2.engine.*;
 import java.io.*;
@@ -71,7 +71,9 @@ public class Engine {
         this.state.addConverter(wheel);
         this.state.addConverter(window);
 
-        //Consumers
+        //Consumer
+        RaceTrack racetrack = new RaceTrack();
+        this.state.addConsumer(racetrack);
 
 
         
@@ -91,9 +93,9 @@ public class Engine {
     }
 
     public String nextTick(){
-        // for(Consumer c: state.getConsumers()){
-        //     c.tick(this.ctx);
-        // }
+        for(Consumer c: state.getConsumers()){
+            c.tick(this.ctx);
+        }
         for(Converter c: state.getConverters()){
             c.tick(this.ctx);
         }
@@ -109,9 +111,9 @@ public class Engine {
     // tick by a certain amount
     public String nextTick(int amount){
         for(int i = 0; i < amount; i++){
-            // for(Consumer c: state.getConsumers()){
-            //     c.tick(this.ctx);
-            // }
+            for(Consumer c: state.getConsumers()){
+                c.tick(this.ctx);
+            }
             for(Converter c: state.getConverters()){
                 c.tick(this.ctx);
             }

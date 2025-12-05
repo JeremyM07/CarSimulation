@@ -26,6 +26,10 @@ public class CarAssembler extends Converter implements Tickable {
         this.addCost(ResourceType.CREDITS, 500);
     }
 
+    public void startConvert(){
+        this.stopConvert = false;
+    }
+
     public ResourceType getInput2(){
         return input2;
     }
@@ -82,6 +86,9 @@ public class CarAssembler extends Converter implements Tickable {
     }
 
     public void tick(Context ctx){
+        if (ctx.state().getResource(this.getOutput()) < 1){
+            this.startConvert();
+        }
         this.convert(ctx);
     }
 
@@ -90,7 +97,7 @@ public class CarAssembler extends Converter implements Tickable {
     public void convert(Context ctx){
         if (ctx.state().getResource(this.getInput()) >= this.getInputAmount() && !stopConvert && ctx.state().getResource(this.getInput2()) >= this.getInput2Amount() && ctx.state().getResource(this.getInput3()) >= this.getInput3Amount() && ctx.state().getResource(this.getInput4()) >= this.getInput4Amount() && ctx.state().getResource(this.getInput5()) >= this.getInput5Amount() && ctx.state().getResource(this.getInput6()) >= this.getInput6Amount() && ctx.state().getResource(this.getInput7()) >= this.getInput7Amount() && ctx.state().getResource(this.getInput8()) >= this.getInput8Amount()){
             ctx.state().addResource(this.getOutput(), this.getOutputAmount());
-            String message = this.getInput().name() + "("+this.getInputAmount()+")" + " + " + this.getInput2().name() + "(" +this.getInput2Amount()+")" + " + " + this.getInput3().name() + "(" +this.getInput3Amount()+")" + " + " + this.getInput4().name() + "(" + this.getInput4Amount() +")" + " + " + this.getInput4().name() + "(" +this.getInput4Amount()+")" + " + " + this.getInput5().name() + "(" +this.getInput5Amount()+")" + " + " + this.getInput6().name() + "(" +this.getInput6Amount()+")" + " + " + this.getInput7().name() + "(" +this.getInput7Amount()+")" + " + " + this.getInput8().name() + "(" +this.getInput8Amount()+")" +" -> " + this.getName() + " -> " + this.getOutput().name() + "(" + this.getOutputAmount() + ")";
+            String message = this.getInput().name() + "("+this.getInputAmount()+")" + " + " + this.getInput2().name() + "(" +this.getInput2Amount()+")" + " + " + this.getInput3().name() + "(" +this.getInput3Amount()+")" + " + " + this.getInput4().name() + "(" + this.getInput4Amount() +")" + " + " + this.getInput5().name() + "(" +this.getInput5Amount()+")" + " + " + this.getInput6().name() + "(" +this.getInput6Amount()+")" + " + " + this.getInput7().name() + "(" +this.getInput7Amount()+")" + " + " + this.getInput8().name() + "(" +this.getInput8Amount()+")" +" -> " + this.getName() + " -> " + this.getOutput().name() + "(" + this.getOutputAmount() + ")";
             System.out.println(message);// Conversion message
             ctx.state().removeResource(this.getInput(), this.getInputAmount());
             ctx.state().removeResource(this.getInput2(), this.getInput2Amount());

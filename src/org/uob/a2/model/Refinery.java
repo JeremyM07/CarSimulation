@@ -6,15 +6,17 @@ import org.uob.a2.data.Saver;
 public class Refinery extends Converter implements Tickable {
     
     private final ResourceType input2 = ResourceType.CRUDE_OIL;
-    private final int input2Amount = 5;
+    private final int input2Amount = 2;
     private boolean stopConvert = false;
     
     public Refinery() {
-        super("Refinery",ResourceType.ENGINEER, 1, ResourceType.PETROL,4);
+        super("Refinery",ResourceType.ENGINEER, 1, ResourceType.PETROL,10);
         this.addCost(ResourceType.CREDITS, 100);
     }
 
-
+    public void startConvert(){
+        this.stopConvert = false;
+    }
     public ResourceType getInput2(){
         return input2;
     }
@@ -24,6 +26,9 @@ public class Refinery extends Converter implements Tickable {
     }
 
     public void tick(Context ctx){
+        if (ctx.state().getResource(this.getOutput()) <= 19){
+            this.startConvert();
+        }
         this.convert(ctx);
     }
 
@@ -36,7 +41,7 @@ public class Refinery extends Converter implements Tickable {
             System.out.println(message);// Conversion message
             ctx.state().removeResource(this.getInput(), this.getInputAmount());
             ctx.state().removeResource(this.getInput2(), this.getInput2Amount());
-            if (ctx.state().getResource(this.getOutput()) > 16){ //Only need 20 petrol, goes up in increments of 4 so will stop at 20 petrol
+            if (ctx.state().getResource(this.getOutput()) > 19){ //Only need 20 petrol, goes up in increments of 4 so will stop at 20 petrol
                 stopConvert = true;
             }
         }

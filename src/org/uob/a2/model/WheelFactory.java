@@ -12,10 +12,12 @@ public class WheelFactory extends Converter implements Tickable {
     private boolean stopConvert = false;
     
     public WheelFactory() {
-        super("Wheel Factory",ResourceType.ENGINEER, 2, ResourceType.WHEEL,2);
+        super("Wheel Factory",ResourceType.ENGINEER, 4, ResourceType.WHEEL,2);
         this.addCost(ResourceType.CREDITS, 100);
     }
-
+    public void startConvert(){
+        this.stopConvert = false;
+    }
     public ResourceType getInput2(){
         return input2;
     }
@@ -33,6 +35,9 @@ public class WheelFactory extends Converter implements Tickable {
     }
 
     public void tick(Context ctx){
+        if (ctx.state().getResource(this.getOutput()) <= 3){
+            this.startConvert();
+        }
         this.convert(ctx);
     }
 
