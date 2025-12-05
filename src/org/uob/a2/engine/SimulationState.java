@@ -20,7 +20,7 @@ public class SimulationState {
         for (ResourceType resource : ResourceType.values()){
             inventory.put(resource, 0);
         }
-        inventory.put(ResourceType.CREDITS, 1000);
+        inventory.put(ResourceType.CREDITS, 3000);
 
         this.producers = new ArrayList<>();
         this.converters = new ArrayList<>();
@@ -83,6 +83,18 @@ public class SimulationState {
 
     public void addConsumer(Consumer consumer){
         consumers.add(consumer);
+    }
+
+    //Misc
+    public boolean canBuild(Entity entity){
+        if (this.getResource(ResourceType.CREDITS) >= entity.getCosts().get(ResourceType.CREDITS)){
+            int originalPrice = entity.getCosts().get(ResourceType.CREDITS);
+            this.removeResource(ResourceType.CREDITS, originalPrice);
+            entity.addCost(ResourceType.CREDITS, originalPrice*10);
+            return true;
+        }else{
+            return false;
+        }
     }
 
     

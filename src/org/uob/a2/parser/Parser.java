@@ -19,9 +19,24 @@ public class Parser {
         List<String> words = Arrays.asList(splitCmd); // Turns array into list object
         String cmd = words.get(0);
 
-        switch 
+        
 
-        if 
+        switch(cmd){
+            case "build":
+            case "b":
+                return new BuildCommand(words);
+            case "tick":
+            case "t":
+                return new TickCommand(words);
+            case "quit":
+            case "q":
+                return new QuitCommand(words);
+            default:
+                return new InvalidCommand(words);
+                
+        }
+
+        
 
         
         

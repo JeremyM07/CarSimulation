@@ -1,7 +1,6 @@
 package org.uob.a2.model;
 import org.uob.a2.engine.*;
 import org.uob.a2.model.*;
-import org.uob.a2.data.Saver;
 
 public class CarAssembler extends Converter implements Tickable {
     
