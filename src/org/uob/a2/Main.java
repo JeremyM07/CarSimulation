@@ -7,6 +7,8 @@ import java.util.Scanner;
 import org.uob.a2.engine.*;
 import org.uob.a2.model.*;
 import org.uob.a2.parser.*; // change when finished
+import java.util.*;
+import java.io.*;
 
 
 import java.util.Scanner;
@@ -22,14 +24,15 @@ public class Main {
         Scanner input = new Scanner(System.in);
         Parser parser = new Parser();
         while (!done){
+            
             System.out.print(">> ");
             Command cmd = parser.parse(input.nextLine());
             String output = cmd.execute(context);
             System.out.println(output);
-            if (cmd.equals("Simulation ending...")){
+            if (output.equals("Simulation ending...")){
                 done = true;
             }
-            System.out.print("+++++++++++++++++++++++++\n\n");
+            System.out.print("\n+++++++++++++++++++++++++\n");
 
                 
         }

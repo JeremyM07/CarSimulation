@@ -55,7 +55,7 @@ public class SimulationState {
         return inventory.get(resource);
     }
 
-    public Map getInventory(){
+    public Map<ResourceType, Integer> getInventory(){
         return inventory;
     }
     public List<Producer> getProducers() {
@@ -70,6 +70,25 @@ public class SimulationState {
         return consumers;
     }
 
+    public List<Map<ResourceType, Integer>> getHistory(){
+        return resourceHistory;
+    }
+
+    public List<Integer> getHistory(ResourceType type) {
+        List<Integer> singleResourceHistory = new ArrayList<>();
+        
+        // loop through the history list
+        for (Map<ResourceType, Integer> snapshot : resourceHistory) {
+            
+            // Extract the amount for the specific resource (default to 0 if missing)
+            int amount = snapshot.getOrDefault(type, 0);
+            
+            // Add it to our new list
+            singleResourceHistory.add(amount);
+        }
+        
+        return singleResourceHistory;
+    }
     
 
     // Adders

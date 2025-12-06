@@ -1,9 +1,13 @@
 package org.uob.a2.parser;
 
 import org.uob.a2.*;
-
+import java.io.*;
+import java.util.*;
 import java.util.List;
 import java.util.Arrays;
+import org.uob.a2.engine.*;
+import org.uob.a2.model.*;
+import java.util.Collections;
 
 
 public class Parser {
@@ -31,6 +35,26 @@ public class Parser {
             case "quit":
             case "q":
                 return new QuitCommand(words);
+            case "cheat":
+                return new CheatCommand(words);
+            case "graph":
+            case "g":
+                return new GraphCommand(words);
+            case "info":
+            case "i":
+                return new InfoCommand(words);
+            case "help":
+            case "h":
+                return new HelpCommand(words);
+            case "race":
+            case "r":
+                return new RaceCommand(words);
+            case "save":
+            case "s":
+                return new SaveCommand(words);
+            case "load":
+            case "l":
+                return new LoadCommand(words);
             default:
                 return new InvalidCommand(words);
                 

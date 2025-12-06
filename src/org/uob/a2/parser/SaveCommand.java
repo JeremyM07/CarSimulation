@@ -1,0 +1,56 @@
+package org.uob.a2.parser;
+
+import org.uob.a2.engine.*;
+import org.uob.a2.model.*;
+import org.uob.a2.engine.Serializer;
+
+import java.io.*;
+import java.util.*;
+
+public class SaveCommand extends Command {
+
+    public SaveCommand(List<String> words) {
+        super(words);
+    }
+
+    @Override
+    public String execute(Context ctx) {
+        // 1. Create Data Directory
+        File dir = new File("data");
+        if (!dir.exists()) {
+            dir.mkdir();
+        }
+
+        saveInventory(ctx);
+        saveEntities(ctx);
+        return "Game saved to 'data/inventory.csv' and 'data/entities.csv'.";
+    }
+
+    private void saveInventory(Context ctx) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("data/inventory.csv", true))) {
+            String data = Serializer.mapToString(ctx.state().getInventory());
+            writer.println(data);
+        } catch (IOException e) {
+            System.out.println("Error saving inventory.");
+        }
+    }
+
+    private void saveEntities(Context ctx) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("data/entities.csv"))) {
+            // Write Header
+            // writer.println("TYPE,NAME,COST,INPUTS,OUTPUTS");
+
+            for (Producer p : ctx.state().getProducers()){
+                writer.println(p.toCSV());
+            }
+            for (Converter c : ctx.state().getConverters()){
+                writer.println(c.toCSV());
+            }
+            for (Consumer c : ctx.state().getConsumers()){
+                writer.println(c.toCSV());
+            }
+        } catch (IOException e) {
+            System.out.println("Error saving entities.");
+        }
+    }
+}

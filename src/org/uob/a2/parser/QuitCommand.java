@@ -12,7 +12,6 @@ public class QuitCommand extends Command {
 
     @Override
     public String execute(Context ctx) {
-        System.exit(0);
         return "Simulation ending...";
     }
 }

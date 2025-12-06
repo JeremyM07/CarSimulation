@@ -12,7 +12,7 @@ public class Saver{
             return "";
         }else{
             String csv = map.entrySet().stream().filter(x -> x.getValue() != null).map(x -> x.getKey().name() + "=" + x.getValue())
-                                                                                  .collect(Collectors.joining("|"));
+                                                                                  .collect(Collectors.joining(";"));
             return csv;
         }
     }

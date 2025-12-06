@@ -138,13 +138,15 @@ public class BuildCommand extends Command{
                         return "Not enough credits to build a Furnace.";
                     }
                 case "race":
-                    if (words.size() > 1 && words.get(2) == "academy"){
-                        RaceAcademy raceacademy = new RaceAcademy();
-                        if (ctx.state().canBuild(raceacademy)){
-                            ctx.state().addConverter(raceacademy);
-                            return "Built a Race Academy.";
-                        }else{
-                            return "Not enough credits to build a Race Academy.";
+                    if (words.size() > 2){
+                        if (words.get(2) == "academy"){
+                            RaceAcademy raceacademy = new RaceAcademy();
+                            if (ctx.state().canBuild(raceacademy)){
+                                ctx.state().addConverter(raceacademy);
+                                return "Built a Race Academy.";
+                            }else{
+                                return "Not enough credits to build a Race Academy.";
+                            }
                         }
                     }else{
                         RaceTrack racetrack = new RaceTrack();

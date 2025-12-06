@@ -26,10 +26,5 @@ public enum ResourceType {
     // FINAL PRODUCT
     RACE_CAR,
     CREDITS,
-    //FROM SHOP
-    TWIN_TURBO,
-    EV_ENGINE,
-    SPOILER,
-    NITROUS,
-    LIGHT_CHASSIS
 }
+
