@@ -44,7 +44,7 @@ public class DashboardFactory extends Converter implements Tickable {
     }
 
     public void tick(Context ctx){
-        if (ctx.state().getResource(this.getOutput()) < 1){
+        if (ctx.state().getResourceAmount(this.getOutput()) < 1){
             this.startConvert();
         }
         this.convert(ctx);
@@ -53,7 +53,7 @@ public class DashboardFactory extends Converter implements Tickable {
  
     @Override
     public void convert(Context ctx){
-        if (ctx.state().getResource(this.getInput()) >= this.getInputAmount() && !stopConvert && ctx.state().getResource(this.getInput2()) >= this.getInput2Amount() && ctx.state().getResource(this.getInput3()) >= this.getInput3Amount() && ctx.state().getResource(this.getInput4()) >= this.getInput4Amount()){
+        if (ctx.state().getResourceAmount(this.getInput()) >= this.getInputAmount() && !stopConvert && ctx.state().getResourceAmount(this.getInput2()) >= this.getInput2Amount() && ctx.state().getResourceAmount(this.getInput3()) >= this.getInput3Amount() && ctx.state().getResourceAmount(this.getInput4()) >= this.getInput4Amount()){
             ctx.state().addResource(this.getOutput(), this.getOutputAmount());
             String message = this.getInput().name() + "("+this.getInputAmount()+")"+ " + " + this.getInput2().name() + "(" +this.getInput2Amount()+")" + " + " + this.getInput3().name() + "(" +this.getInput3Amount()+")" + " + " + this.getInput4().name() + "(" + this.getInput4Amount() +")" + " -> " + this.getName() + " -> " + this.getOutput().name() + "(" + this.getOutputAmount() + ")";
             System.out.println(message);// Conversion message
@@ -61,7 +61,7 @@ public class DashboardFactory extends Converter implements Tickable {
             ctx.state().removeResource(this.getInput2(), this.getInput2Amount());
             ctx.state().removeResource(this.getInput3(), this.getInput3Amount());
             ctx.state().removeResource(this.getInput4(), this.getInput4Amount());
-            if (ctx.state().getResource(this.getOutput()) > 0){ //Only need 1 Dash per car manufacture cycle
+            if (ctx.state().getResourceAmount(this.getOutput()) > 0){ //Only need 1 Dash per car manufacture cycle
                 stopConvert = true;
             }
         }

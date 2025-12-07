@@ -25,7 +25,7 @@ public class WindowFactory extends Converter implements Tickable {
     }
 
     public void tick(Context ctx){
-        if (ctx.state().getResource(this.getOutput()) <= 5){
+        if (ctx.state().getResourceAmount(this.getOutput()) <= 5){
             this.startConvert();
         }
         this.convert(ctx);
@@ -34,13 +34,13 @@ public class WindowFactory extends Converter implements Tickable {
  
     @Override
     public void convert(Context ctx){
-        if (ctx.state().getResource(this.getInput()) >= this.getInputAmount() && !stopConvert && ctx.state().getResource(this.getInput2()) >= this.getInput2Amount()){
+        if (ctx.state().getResourceAmount(this.getInput()) >= this.getInputAmount() && !stopConvert && ctx.state().getResourceAmount(this.getInput2()) >= this.getInput2Amount()){
             ctx.state().addResource(this.getOutput(), this.getOutputAmount());
             String message = this.getInput().name() + "("+this.getInputAmount()+")"+ " + " + this.getInput2().name() + "(" +this.getInput2Amount()+")" + " -> " + this.getName() + " -> " + this.getOutput().name() + "(" + this.getOutputAmount() + ")";
             System.out.println(message);// Conversion message
             ctx.state().removeResource(this.getInput(), this.getInputAmount());
             ctx.state().removeResource(this.getInput2(), this.getInput2Amount());
-            if (ctx.state().getResource(this.getOutput()) > 5){ //Only need 6 WINDOWS per car manufacture cycle
+            if (ctx.state().getResourceAmount(this.getOutput()) > 5){ //Only need 6 WINDOWS per car manufacture cycle
                 stopConvert = true;
             }
         }

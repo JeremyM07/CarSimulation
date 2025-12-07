@@ -34,7 +34,7 @@ public class WheelFactory extends Converter implements Tickable {
     }
 
     public void tick(Context ctx){
-        if (ctx.state().getResource(this.getOutput()) <= 3){
+        if (ctx.state().getResourceAmount(this.getOutput()) <= 3){
             this.startConvert();
         }
         this.convert(ctx);
@@ -43,14 +43,14 @@ public class WheelFactory extends Converter implements Tickable {
  
     @Override
     public void convert(Context ctx){
-        if (ctx.state().getResource(this.getInput()) >= this.getInputAmount() && !stopConvert && ctx.state().getResource(this.getInput2()) >= this.getInput2Amount() && ctx.state().getResource(this.getInput3()) >= this.getInput3Amount()){
+        if (ctx.state().getResourceAmount(this.getInput()) >= this.getInputAmount() && !stopConvert && ctx.state().getResourceAmount(this.getInput2()) >= this.getInput2Amount() && ctx.state().getResourceAmount(this.getInput3()) >= this.getInput3Amount()){
             ctx.state().addResource(this.getOutput(), this.getOutputAmount());
             String message = this.getInput().name() + "("+this.getInputAmount()+")"+ " + " + this.getInput2().name() + "(" +this.getInput2Amount()+")" + " + " + this.getInput3().name() + "(" +this.getInput3Amount()+")" + " -> " + this.getName() + " -> " + this.getOutput().name() + "(" + this.getOutputAmount() + ")";
             System.out.println(message);// Conversion message
             ctx.state().removeResource(this.getInput(), this.getInputAmount());
             ctx.state().removeResource(this.getInput2(), this.getInput2Amount());
             ctx.state().removeResource(this.getInput3(), this.getInput3Amount());
-            if (ctx.state().getResource(this.getOutput()) > 3){ //Only need 4 wheels per car manufacture cycle
+            if (ctx.state().getResourceAmount(this.getOutput()) > 3){ //Only need 4 wheels per car manufacture cycle
                 stopConvert = true;
             }
         }

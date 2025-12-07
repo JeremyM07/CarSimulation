@@ -92,7 +92,7 @@ public class Engine {
         return this.state;
     }
 
-    public String nextTick(){
+    public String nextTick(){// ticks every entity
         for(Consumer c: state.getConsumers()){
             c.tick(this.ctx);
         }
@@ -105,35 +105,36 @@ public class Engine {
         //...
         this.tick++;
         this.state.updateHistory();
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++");
         return "Tick : " + this.getCurrentTick();
     }
 
-    // tick by a certain amount
-    public String nextTick(int amount){
-        for(int i = 0; i < amount; i++){
-            for(Consumer c: state.getConsumers()){
-                c.tick(this.ctx);
-            }
-            for(Converter c: state.getConverters()){
-                c.tick(this.ctx);
-            }
+    // tick by a certain amount --> Used for initial tests ---> now is redundant
+    // public String nextTick(int amount){
+    //     for(int i = 0; i < amount; i++){
+    //         for(Consumer c: state.getConsumers()){
+    //             c.tick(this.ctx);
+    //         }
+    //         for(Converter c: state.getConverters()){
+    //             c.tick(this.ctx);
+    //         }
             
-            for(Producer p : state.getProducers()){
-                p.tick(this.ctx); 
-            }
+    //         for(Producer p : state.getProducers()){
+    //             p.tick(this.ctx); 
+    //         }
 
-            //...
-            this.tick++;
-            this.state.updateHistory();
-            if (i != amount-1){
-                System.out.println("Tick : " + this.getCurrentTick());
-                System.out.println("");
-                System.out.println("-------------------------------------------");
-            }
+    //         //...
+    //         this.tick++;
+    //         this.state.updateHistory();
+    //         if (i != amount-1){
+    //             System.out.println("Tick : " + this.getCurrentTick());
+    //             System.out.println("");
+    //             System.out.println("-------------------------------------------");
+    //         }
             
-        }
-        return "Tick : " + this.getCurrentTick();
-    }
+    //     }
+    //     return "Tick : " + this.getCurrentTick();
+    // }
     
 
     

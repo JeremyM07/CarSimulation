@@ -14,7 +14,7 @@ public class TickCommand extends Command {
     public String execute(Context ctx) {
         int ticks = 1;
         
-        // Check if user type number
+        // check if user type number
         if (words.size() > 1) {
             try {
                 ticks = Integer.parseInt(words.get(1));
@@ -23,9 +23,9 @@ public class TickCommand extends Command {
             }
         }
 
-        // Logic
+        // ticks
         for (int i = 0; i < ticks; i++) {
-            ctx.engine().nextTick();
+            System.out.println(ctx.engine().nextTick());
         }
 
         return "Advanced time by " + ticks + " ticks.";

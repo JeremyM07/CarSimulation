@@ -27,7 +27,7 @@ public class SaveCommand extends Command {
     }
 
     private void saveInventory(Context ctx) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("data/inventory.csv", true))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("data/inventory.csv", false))) {// false ensures file is overwritten
             String data = Serializer.mapToString(ctx.state().getInventory());
             writer.println(data);
         } catch (IOException e) {
@@ -36,7 +36,7 @@ public class SaveCommand extends Command {
     }
 
     private void saveEntities(Context ctx) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("data/entities.csv"))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("data/entities.csv", false))) {
             // Write Header
             // writer.println("TYPE,NAME,COST,INPUTS,OUTPUTS");
 

@@ -23,7 +23,7 @@ public class Furnace extends Converter implements Tickable{
 
     @Override
     public void convert(Context ctx){
-        if (ctx.state().getResource(this.getInput()) >= this.getInputAmount() && ctx.state().getResource(this.getInput2()) >= this.getInput2Amount()){
+        if (ctx.state().getResourceAmount(this.getInput()) >= this.getInputAmount() && ctx.state().getResourceAmount(this.getInput2()) >= this.getInput2Amount()){
             ctx.state().addResource(this.getOutput(), this.getOutputAmount());
             String message = this.getInput().name() + "("+this.getInputAmount()+")"+ " + " + this.getInput2().name() + "(" +this.getInput2Amount()+")" + " -> " + this.getName() + " -> " + this.getOutput().name() + "(" + this.getOutputAmount() + ")";
             System.out.println(message);// Conversion message

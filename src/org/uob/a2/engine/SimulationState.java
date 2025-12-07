@@ -51,7 +51,7 @@ public class SimulationState {
     }
 
     // Getters 
-    public int getResource(ResourceType resource){
+    public int getResourceAmount(ResourceType resource){
         return inventory.get(resource);
     }
 
@@ -74,16 +74,11 @@ public class SimulationState {
         return resourceHistory;
     }
 
+    //Used for graph of single resource
     public List<Integer> getHistory(ResourceType type) {
         List<Integer> singleResourceHistory = new ArrayList<>();
-        
-        // loop through the history list
         for (Map<ResourceType, Integer> snapshot : resourceHistory) {
-            
-            // Extract the amount for the specific resource (default to 0 if missing)
             int amount = snapshot.getOrDefault(type, 0);
-            
-            // Add it to our new list
             singleResourceHistory.add(amount);
         }
         
@@ -106,7 +101,7 @@ public class SimulationState {
 
     //Misc
     public boolean canBuild(Entity entity){
-        if (this.getResource(ResourceType.CREDITS) >= entity.getCosts().get(ResourceType.CREDITS)){
+        if (this.getResourceAmount(ResourceType.CREDITS) >= entity.getCosts().get(ResourceType.CREDITS)){
             int originalPrice = entity.getCosts().get(ResourceType.CREDITS);
             this.removeResource(ResourceType.CREDITS, originalPrice);
             entity.addCost(ResourceType.CREDITS, originalPrice*10);

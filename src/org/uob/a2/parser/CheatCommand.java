@@ -13,9 +13,16 @@ public class CheatCommand extends Command {
 
     @Override
     public String execute(Context ctx) {
-        for (ResourceType r: ctx.state().getInventory().keySet()){
-            ctx.state().addResource(r, 999);
+        if (words.size() < 2){
+            for (ResourceType r: ctx.state().getInventory().keySet()){
+                ctx.state().addResource(r, 999);
+            }
+            return "CHEAT CMD: +999 ALL.";
+        }else if(words.get(1).equals("build")){
+            ctx.engine().initialiseDefaults();
+            return "CHEAT CMD: ALL ENTITIES BUILT.";
+        }else{
+            return "Invalid Cheat Command.";
         }
-        return "CHEAT CMD: +999 ALL.";
     }
 }

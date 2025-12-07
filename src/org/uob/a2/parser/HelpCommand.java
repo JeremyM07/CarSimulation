@@ -14,12 +14,13 @@ public class HelpCommand extends Command {
         // general
         if (words.size() == 1) {
             return "Available Commands:\n" +
-                   "  build <name>   : Construct a building (e.g., 'build mine')\n" +
+                   "  build <name>   : Construct a building (e.g., 'build coal mine')\n" +
                    "  race           : Final action of race track. Gain credits.\n" +
                    "  tick [n]       : Advance time by n ticks\n" +
                    "  info [topic]   : View details of an entity or resource\n" +
-                   "  graph <res>    : Plot the history of a resource\n" +
+                   "  graph <resource>    : Plot the history of a resource\n" +
                    "  help [cmd]     : Get detailed help for a command\n" +
+                   "  cheat 'build'  : 'cheat' Gives +999 resources or use 'cheat build' for all entities built.\n" +
                    "  quit           : Exit the simulation";
         }
 
