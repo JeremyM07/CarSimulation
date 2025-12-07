@@ -23,7 +23,19 @@ public class SaveCommand extends Command {
 
         saveInventory(ctx);
         saveEntities(ctx);
-        return "Game saved to 'data/inventory.csv' and 'data/entities.csv'.";
+        saveUpgrades(ctx);
+        return "Game saved to 'data/inventory.csv', 'data/entities.csv' and 'data/upgrades.csv'.";
+    }
+
+    private void saveUpgrades(Context ctx){
+            // Create a new file "data/upgrades.csv"
+        try (PrintWriter writer = new PrintWriter(new FileWriter("data/upgrades.csv", false))) {
+            for (ShopItem item : ctx.state().getUpgrades()) {
+                writer.println(item.name());
+            }
+        } catch (IOException e){
+            System.out.println("Error saving upgrades");
+        }
     }
 
     private void saveInventory(Context ctx) {

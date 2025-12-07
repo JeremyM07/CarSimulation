@@ -4,7 +4,8 @@ import org.uob.a2.model.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
-
+import java.util.Set;
+import java.util.HashSet;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -15,6 +16,7 @@ public class SimulationState {
     private List<Consumer> consumers;
     private Map<ResourceType, Integer> inventory = new EnumMap<>(ResourceType.class);
     private List<Map<ResourceType, Integer>> resourceHistory = new ArrayList<>();
+    private Set<ShopItem> upgrades = new HashSet<>();
 
     public SimulationState(){// initialise all resource values to 0, credits to 1000
         for (ResourceType resource : ResourceType.values()){
@@ -50,6 +52,17 @@ public class SimulationState {
         }
     }
 
+    // Shop
+    public void addUpgrade(ShopItem item) {
+        upgrades.add(item);
+    }
+
+    // to check
+    public boolean hasUpgrade(ShopItem item) {
+        return upgrades.contains(item);
+    }
+    
+
     // Getters 
     public int getResourceAmount(ResourceType resource){
         return inventory.get(resource);
@@ -72,6 +85,10 @@ public class SimulationState {
 
     public List<Map<ResourceType, Integer>> getHistory(){
         return resourceHistory;
+    }
+
+    public Set<ShopItem> getUpgrades() {
+        return upgrades;
     }
 
     //Used for graph of single resource

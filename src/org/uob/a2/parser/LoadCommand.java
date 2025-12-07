@@ -17,17 +17,33 @@ public class LoadCommand extends Command {
     public String execute(Context ctx) {
         File invFile = new File("data/inventory.csv");
         File entFile = new File("data/entities.csv");
+        File upgFile = new File("data/upgrades.csv");
 
-        if (!invFile.exists() || !entFile.exists()) {
+        if (!invFile.exists() || !entFile.exists() || !upgFile.exists()) {
             return "No save data found.";
         }
 
         loadInventory(ctx, invFile);
         loadEntities(ctx, entFile);
+        loadUpgrades(ctx, upgFile);
         
         return "Game loaded successfully.";
     }
 
+    private void loadUpgrades(Context ctx, File file){
+        try (BufferedReader br = new BufferedReader(new FileReader("data/upgrades.csv"))) {
+            String line;
+            ctx.state().getUpgrades().clear();
+            while ((line = br.readLine()) != null) {
+                ctx.state().addUpgrade(ShopItem.valueOf(line));
+            }
+        }catch (IOException e){
+            System.out.println("Error loading upgrades");
+        }
+    }
+
+
+    
     private void loadInventory(Context ctx, File file) {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line = br.readLine();

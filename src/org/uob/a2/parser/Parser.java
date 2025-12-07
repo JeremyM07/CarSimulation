@@ -37,6 +37,8 @@ public class Parser {
                 return new QuitCommand(words);
             case "cheat":
                 return new CheatCommand(words);
+            case "shop":
+                return new ShopCommand(words);
             case "graph":
             case "g":
                 return new GraphCommand(words);
@@ -50,7 +52,7 @@ public class Parser {
             case "r":
                 return new RaceCommand(words);
             case "save":
-            case "s":
+            // case "s":
                 return new SaveCommand(words);
             case "load":
             case "l":

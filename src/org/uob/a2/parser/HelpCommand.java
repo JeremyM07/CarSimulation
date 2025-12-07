@@ -12,7 +12,7 @@ public class HelpCommand extends Command {
     @Override
     public String execute(Context ctx) {
         // general
-        if (words.size() == 1) {
+        if (words.size() < 2) {
             return "Available Commands:\n" +
                    "  build <name>   : Construct a building (e.g., 'build coal mine')\n" +
                    "  race           : Final action of race track. Gain credits.\n" +
@@ -21,11 +21,13 @@ public class HelpCommand extends Command {
                    "  graph <resource>    : Plot the history of a resource\n" +
                    "  help [cmd]     : Get detailed help for a command\n" +
                    "  cheat 'build'  : 'cheat' Gives +999 resources or use 'cheat build' for all entities built.\n" +
+                   "  save/load      :  Saves game to csv file or loads existing game from csv file.\n" + 
                    "  quit           : Exit the simulation";
         }
 
         // specific
-        String topic = words.get(1).toLowerCase();
+        
+        String topic = words.get(1);
 
         switch (topic) {
             case "build":
@@ -75,6 +77,10 @@ public class HelpCommand extends Command {
                 return "--- Help Command ---\n" +
                        "Usage: help|h [command]\n" +
                        "Description: Shows detailed usage instructions for a specific command.";
+            case "shop":
+                return "--- Shop Command ---\n" +
+                       "Usage: shop [item]\n" +
+                       "Description: Shop for modifications to boost win rate or bonus payout.";
 
             default:
                 return "Unknown command: '" + topic + "'. Type 'help' for a list of valid commands.";
