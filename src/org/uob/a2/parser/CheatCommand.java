@@ -21,6 +21,9 @@ public class CheatCommand extends Command {
         }else if(words.get(1).equals("build")){
             ctx.engine().initialiseDefaults();
             return "CHEAT CMD: ALL ENTITIES BUILT.";
+        }else if(words.get(1).equals("credits") || words.get(1).equals("credit")){
+            ctx.state().updateResource(ResourceType.CREDITS, 9999999);
+            return "CHEAT CMD: +9,999,999 CREDITS.";
         }else{
             return "Invalid Cheat Command.";
         }
