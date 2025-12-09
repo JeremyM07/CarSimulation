@@ -3,7 +3,7 @@ package org.uob.a2.model;
 public enum ShopItem{
 
     
-    //FROM SHOP- (COST, DESC)
+    //FROM SHOP- (COST, DESC, MOD)
     TWIN_TURBO(100000, "Enhances engine performance, increasing your win rate by 40%", 0.4),
     EV_ENGINE(150000,"This electric engine will thunder your car into higher placements, boosting your win rates 50%!", 0.5),
     SPOILER(70000, "Adds better aerodynamic control to your car, increasing your handling and your win rate by 15%.", 0.15),

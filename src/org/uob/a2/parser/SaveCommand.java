@@ -15,7 +15,7 @@ public class SaveCommand extends Command {
 
     @Override
     public String execute(Context ctx) {
-        // 1. Create Data Directory
+        // Create Data Directory
         File dir = new File("data");
         if (!dir.exists()) {
             dir.mkdir();
@@ -28,7 +28,6 @@ public class SaveCommand extends Command {
     }
 
     private void saveUpgrades(Context ctx){
-            // Create a new file "data/upgrades.csv"
         try (PrintWriter writer = new PrintWriter(new FileWriter("data/upgrades.csv", false))) {
             for (ShopItem item : ctx.state().getUpgrades()) {
                 writer.println(item.name());
@@ -49,8 +48,8 @@ public class SaveCommand extends Command {
 
     private void saveEntities(Context ctx) {
         try (PrintWriter writer = new PrintWriter(new FileWriter("data/entities.csv", false))) {
-            // Write Header
-            // writer.println("TYPE,NAME,COST,INPUTS,OUTPUTS");
+            // Headers
+            // "TYPE,NAME,COST,INPUTS,OUTPUTS"
 
             for (Producer p : ctx.state().getProducers()){
                 writer.println(p.toCSV());

@@ -10,8 +10,8 @@ public class Serializer {
     public static String mapToString(Map<ResourceType, Integer> map) {
         if (map == null || map.isEmpty()) {return "NONE";}
         return map.entrySet().stream()
-                .map(e -> e.getKey() + ":" + e.getValue())
-                .collect(Collectors.joining(";"));
+                  .map(e -> e.getKey() + ":" + e.getValue())
+                  .collect(Collectors.joining(";"));
     }
 
     

@@ -34,7 +34,8 @@ public class SimulationState {
     }
 
     public void updateHistory(){
-        resourceHistory.add(inventory);
+        Map<ResourceType, Integer> snapshot = new EnumMap<>(inventory);
+        resourceHistory.add(snapshot);
     }
 
     public void addResource(ResourceType resource, int amount){

@@ -13,17 +13,17 @@ public class GraphCommand extends Command {
 
     @Override
     public String execute(Context ctx) {
-        // Validation
+        // validation
         if (words.size() < 2) {
-            return "Usage: graph <resource_name> (e.g., graph IRON_ORE)";
+            return "Usage: graph <resource_name> (e.g., graph iron)";
         }
 
         String resourceName = words.get(1);
         ResourceType type;
 
-        // 2. The Switch Statement (Replacing try-catch)
+        
         switch (resourceName) {
-            // NATURAL RESOURCES
+            // RESOURCES
             case "iron":
             case "iron_ore":
                 type = ResourceType.IRON_ORE;
@@ -55,7 +55,7 @@ public class GraphCommand extends Command {
                 type = ResourceType.ENGINEER;
                 break;
 
-            // FROM CONVERTERS
+            // CONVERTERS
             case "steel":
                 type = ResourceType.STEEL;
                 break;
@@ -105,6 +105,7 @@ public class GraphCommand extends Command {
             case "car":
                 type = ResourceType.RACE_CAR;
                 break;
+            // MONEY
             case "credits":
             case "money":
             case "cash":
@@ -133,13 +134,13 @@ public class GraphCommand extends Command {
         // graph
         int tick = 0;
         for (int value : data) {
-            sb.append(String.format("T%-3d | ", tick++));
+            sb.append(String.format("T%-3d | ", tick++)); // ensure graph is straight
 
             // Calculate how many # to print
             // Logic: (CurrentValue / MaxValue) * 50
             int numStars = (int) (((double) value / maxVal) * maxBarWidth);
 
-            // Append stars
+            // Append hashtags
             for (int i = 0; i < numStars; i++) {
                 sb.append("#");
             }

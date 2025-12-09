@@ -64,16 +64,15 @@ public class LoadCommand extends Command {
 
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            // br.readLine(); // skip Header
             String line;
             
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length < 15) continue;
+                if (parts.length < 1) continue;
 
-                String name = parts[0];
+                String name = parts[0].trim();
                 
-                // Recreate the specific object
+                // recreate the specific object
                 Entity e = createEntityByName(name);
 
                 if (e != null) {
@@ -94,7 +93,7 @@ public class LoadCommand extends Command {
         }
     }
 
-    // MAPS STRINGS BACK TO CLASSES
+    // MAP STRINGs BACK TO CLASSES
     private Entity createEntityByName(String name) {
         switch (name.toLowerCase()) {
             // Producers
