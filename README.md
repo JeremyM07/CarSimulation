@@ -30,11 +30,13 @@ The interface is driven by a custom **Command Parser**, separating user input fr
 ## 🛠️ Installation & Usage
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/JeremyM07/Car-Simulation.git](https://github.com/JeremyM07/Car-Simulation.git)
+   git clone https://github.com/JeremyM07/CarSimulation.git
    ```
 2. **Run the run.sh file**
    ```bash
    chmod +x run.sh
+   ```
+   ```bash
    ./run.sh
-  ```
+   ```
 
